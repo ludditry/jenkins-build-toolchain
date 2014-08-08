@@ -95,7 +95,7 @@ mkdir -p ${TOOLCHAIN_PATH}/zerovm-toolchain
 
 # here's an ugly hack for you...
 mkdir -p ${TOOLCHAIN_PATH}/zerovm-toolchain/api
-cp zerovm/api/zvm.h ${TOOCHAIN_PATH}/zerovm-toolchain/api
+cp zerovm/api/zvm.h ${TOOLCHAIN_PATH}/zerovm-toolchain/api
 
 pushd toolchain
 
