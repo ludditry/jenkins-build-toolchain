@@ -55,14 +55,14 @@ MISSING_PACKAGES=""
 for package in libc6-dev-i386 libglib2.0-dev pkg-config git build-essential \
     automake autoconf libtool g++-multilib texinfo flex bison groff gperf \
     texinfo subversion; do
-    if ( ! dpkg -s ${package} ); then
+    if ( ! dpkg -s ${package} > /dev/null 2>&1 ); then
         echo "Missing package ${package}"
         MISSING_PACKAGES="${package} ${MISSING_PACKAGES}"
         HAVE_PACKAGES=0
     fi
 done
 
-if [ $MISSING_PACKAGES -eq 1 ]; then
+if [ $HAVE_PACKAGES -eq 0 ]; then
     echo "try: apt-get install ${MISSING_PACKAGES}"
     exit 1
 fi
