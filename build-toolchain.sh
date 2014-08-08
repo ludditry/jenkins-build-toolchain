@@ -100,10 +100,14 @@ cat > toolchain.env <<EOF
 export ZVM_PREFIX=${TOOLCHAIN_PATH}/zerovm-toolchain
 export ZRT_ROOT=${TOOLCHAIN_PATH}/zrt
 export LD_LIBRARY_PATH=${TOOLCHAIN_PATH}/validator/native_client/src/trusted/validator/.libs
-export CPATH=${TOOLCHAIN_PATH}/zerovm-2.0/api
+export CPATH=${TOOLCHAIN_PATH}/zerovm/api
 EOF
 
 source toolchain.env
+
+# here's an ugly hack for you...
+mkdir -p ${ZVM_PREFIX}/api
+cp zerovm/api/zvm.h ${ZVM_PREFIX}/api
 
 make
 popd # toolchain
