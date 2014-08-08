@@ -80,10 +80,12 @@ git_refresh https://github.com/zerovm/zerovm devel
 git_refresh https://github.com/zerovm/validator master
 git_refresh https://github.com/zerovm/zrt master ${TOOLCHAIN_PATH}/zrt
 git_refresh https://github.com/zerovm/toolchain master ${TOOLCHAIN_PATH}/toolchain
+git_refresh https://github.com/zerovm/gcc zerovm ${TOOLCHAIN_PATH}/SRC/gcc
 
-for d in linux-headers-for-nacl gcc glibc newlib binutils; do
-    git_refresh https://github.com/zerovm/${d} master toolchain/SRC/${d}
+for d in linux-headers-for-nacl glibc newlib binutils; do
+    git_refresh https://github.com/zerovm/${d} master ${TOOLCHAIN_PATH}/SRC/${d}
 done
+
 
 pushd validator
 do_configure
