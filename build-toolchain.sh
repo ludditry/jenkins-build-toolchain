@@ -86,13 +86,16 @@ for d in linux-headers-for-nacl glibc newlib binutils; do
     git_refresh https://github.com/zerovm/${d} master ${TOOLCHAIN_PATH}/toolchain/SRC/${d}
 done
 
-
 pushd validator
 do_configure
 make
 popd # validator
 
 mkdir -p ${TOOLCHAIN_PATH}/zerovm-toolchain
+
+# here's an ugly hack for you...
+mkdir -p ${TOOLCHAIN_PATH}/zerovm-toolchain/api
+cp zerovm/api/zvm.h ${TOOCHAIN_PATH}/zerovm-toolchain/api
 
 pushd toolchain
 
@@ -104,10 +107,6 @@ export CPATH=${TOOLCHAIN_PATH}/zerovm/api
 EOF
 
 source toolchain.env
-
-# here's an ugly hack for you...
-mkdir -p ${ZVM_PREFIX}/api
-cp zerovm/api/zvm.h ${ZVM_PREFIX}/api
 
 make
 popd # toolchain
