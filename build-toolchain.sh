@@ -104,6 +104,7 @@ export ZVM_PREFIX=${TOOLCHAIN_PATH}/zerovm-toolchain
 export ZRT_ROOT=${TOOLCHAIN_PATH}/zrt
 export LD_LIBRARY_PATH=${TOOLCHAIN_PATH}/validator/native_client/src/trusted/validator/.libs
 export CPATH=${TOOLCHAIN_PATH}/zerovm/api
+export PATH=${ZVM_PREFIX}/bin:${PATH}
 EOF
 
 source toolchain.env
