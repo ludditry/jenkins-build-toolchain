@@ -76,13 +76,13 @@ TOOLCHAIN_PATH=$(readlink -f toolchain)
 
 pushd $TOOLCHAIN_PATH
 
-git_refresh https://github.com/zerovm/zerovm devel
+git_refresh https://github.com/zerovm/zerovm master
 git_refresh https://github.com/zerovm/validator master
 git_refresh https://github.com/zerovm/zrt master ${TOOLCHAIN_PATH}/zrt
 git_refresh https://github.com/zerovm/toolchain master ${TOOLCHAIN_PATH}/toolchain
-git_refresh https://github.com/zerovm/gcc zerovm ${TOOLCHAIN_PATH}/toolchain/SRC/gcc
+#git_refresh https://github.com/zerovm/gcc master ${TOOLCHAIN_PATH}/toolchain/SRC/gcc
 
-for d in linux-headers-for-nacl glibc newlib binutils; do
+for d in gcc linux-headers-for-nacl glibc newlib binutils; do
     git_refresh https://github.com/zerovm/${d} master ${TOOLCHAIN_PATH}/toolchain/SRC/${d}
 done
 
